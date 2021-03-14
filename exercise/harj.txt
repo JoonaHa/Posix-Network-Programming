@@ -1,0 +1,118 @@
+582303 Network Programming
+==========================
+
+Programming Exercise (Feb 24 - March 9, 2020):
+
+
+For this programming exercise there is only a single task as described
+below but it is somewhat more demanding than the usual weekly exercise
+set. The task is the same for all students and each student is supposed
+to complete this task independently and as soon as possible, but at
+latest by Monday, March 9, 2020 (see further information on grading
+below). Completing this task is required to pass the course.
+
+Your task is to write a program that communicates with a server program
+(service) which has the service name
+
+ UNIX_TL
+
+and which is running on host
+
+ whx-10.cs.helsinki.fi
+
+Write a program which connects to the UNIX_TL server using TCP and
+follow the instructions that the UNIX_TL server will send to your
+program. You have completed the task, once you get a message
+
+"...  Your program has been ACCEPTED ..."
+
+
+UNIX_TL server will not give you all instructions at once, so make sure
+you ALWAYS read (receive) everything it sends to your program and do not
+close any connection (socket) prematurely. In addition, note that not
+everything is fully explained in the instructions, but sometimes you
+need to deduce or guess what your program is required to do. Careful
+inspection of how UNIX_TL does things should help in many cases.
+
+Please make sure your program can be run autonomously, that is, it
+should require no human intervention at run time (e.g., no user input).
+Any input should be given only as command line arguments. Also, all IP
+addresses and port numbers should be resolved by the program code.
+
+UNIX_TL will start its execution on Monday, February 24, 2020, 
+at 11 o'clock. There will be an announcement on the course web 
+page once the server is running.
+
+Important!!!:
+
+Your program may get accepted only if it runs on one of the CS
+Department computers (the Linux machines at the department) and
+it has access to the CS department home file system and your
+home directory there  /home/fs/<login name>/ 
+
+If you don't have an account on these computers, please contact 
+tktl-luvat@cs.helsinki.fi. It is NOT possible to connect to the server
+outside of the CS Department network.
+
+If working remotely, use one of the CS Department nodes
+
+ np1.cs.helsinki.fi 
+ np2.cs.helsinki.fi 
+ np3.cs.helsinki.fi 
+ np4.cs.helsinki.fi 
+ np5.cs.helsinki.fi 
+
+for remote login (via melkki or melkinpaasi) to run your program.
+
+NOTE: The nodes listed above are guaranteed to have connectivity
+      with the server node, but the PC computers in the CS Department
+      classrooms should possibly work as well.
+
+
+When asked, send the pathname for the source code of your program. It
+should be relative to your home directory as you will be instructed by
+the server. In addition, make sure that the source code for your program is
+implemented in a SINGLE source code file ONLY (e.g., my_program.c) and
+contains no other include's than the standard headers that you need (no
+linking of several modules from separate source code files) and compiles
+with
+
+ cc my_program.c  (OR gcc my_program.c)
+
+on CS Department Unix (Linux) computers.
+
+Follow this instruction even though, in general, it might not be the
+best practise to implement a program in a single source code file
+(module).
+
+Instructor (Markku Kojo) will be available for questions and help on
+this task in room C216 according to the following schedule:
+
+
+Tue Feb 25  at 14:00 - 14:30
+Wed Feb 26  at 16:00 - 16:30
+Thu Feb 27  at 13:30 - 14:00
+Fri Feb 28  at 12:00 - 12:30
+Mon Mar  2  at 12:30 - 13:00
+
+To pass the course this task should be completed by March 9, 2020 at
+24:00 (EET) o'clock at latest.
+
+The maximum course points you may gain with this exercise depends on the
+time and date your program becomes accepted as follows:
+
+7 points deadline Tue, Feb 25, at 24:00 (EET)
+6 points deadline Wed, Feb 26, at 24:00 (EET)
+5 points deadline Thu, Feb 27, at 24:00 (EET)
+4 points deadline Fri, Feb 28, at 24:00 (EET)
+3 points deadline Sun, Mar 1, at 24:00 (EET)
+2 points deadline Fri, Mar  6, at 24:00 (EET)
+1 point  deadline Mon, Mar  9, at 24:00 (EET)
+
+The quality of the program code, including how the source code is
+commented and how well it fulfills the requirements set above, will also
+be taken into account when grading this exercise. Note, however, that
+given the nature of the exercise we do not expect fully polished nor
+production quality code.
+
+Good luck!

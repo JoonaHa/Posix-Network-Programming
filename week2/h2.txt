@@ -1,0 +1,134 @@
+TKT21026 Network Programming
+============================
+
+Exercise 2  (due January 29, 2020):
+
+1. Extend the simple fork program (see below) as follows (NOTE: make
+   sure that you successfully complete the task 6 of exercise 1 before
+   testing your program and use your own computer or use remote login
+   (ssh) to the computer np1.cs.helsinki.fi at the Dept. of Computer
+   Science to test your program. See also the note below!):
+
+  a)  Add necessary error checking, change output so that system call
+      write() is employed for output (hint: see man sprintf for output
+      string formating) and necessary information is added to the
+      printout so that you know which process prints each of the output
+      lines.
+
+   b) Modify the program so that exactly five processes will be running,
+      and each process executes the for-loop simultaneously and the same
+      number of times.
+
+   c) [Optional] The number of processes executing the for-loop is given
+      as a command line argument (default is 5 and maximum is 50 
+      processes).
+
+
+-----------------------------------------------------------------
+
+/* simple fork example 1 */
+#include <stdio.h>
+main()
+{
+        int i; 
+        fork();
+        for  (i = 1; i <= 5; i++)
+           printf(" i = %d \n", i );
+        exit(0);
+}
+------------------------------------------------------------------
+
+
+2. Extend the simple fork example above further as follows:
+
+   a) The program is given an executable file path name as a command
+      line argument and, in addition, another optional command line
+      argument. The parent process executes the for-loop, waits the
+      child to terminate and finds out the exit status of the child
+      process.
+
+      The child process calls function 
+
+         int do_child(char *path, char *arg)
+
+      The file name that was given as a command line argument is
+      passed to the do_child() function in 'path' and the additional
+      command line argument in 'arg'. If the additional command line
+      argument is not present, a null pointer is passed in 'arg'.
+
+      The function do_child() executes a program (see man 2 execve)
+      given in the parameter 'path' and the optional command line
+      argument for the program is given in the parameter 'arg'. Take
+      care of the appropriate error checking and output layout.
+
+   Test the program with different command line argument values, but be
+   careful in choosing which program file name to give as the command
+   line argument (e.g., using program "echo", full pathname /bin/echo,
+   is a safe choice). You may also write a small test program of your
+   own for the testing purposes. 
+
+   To test the exit status of a child that is terminated by a signal,
+   you may write a very simple program that just calls pause() (see man
+   2 pause) and after starting the program just send a terminating 
+   signal to the child process.
+
+
+3. What information within the process context a child process
+   'inherits' from its parent in fork() system call? All possible
+   details are not needed, but make sure that any issues related to the
+   use of files, pipes and other special devices becomes clear.
+
+
+4. a) How do the variants of the exec call differ from each other?
+      (that is, execve() and its front ends: execl(), execlp(), 
+      execle(), etc.)
+
+   b) What information in process context is changed (or remains the
+      same) when a process calls exec() system call?
+   
+
+5. Write a program with two processes: reader and doubler. The reader
+   process reads lines from standard input and sends these lines to the
+   doubler process through a pipe. The doubler process duplicates each
+   line to the standard output (that is, writes each line twice). Use
+   unnamed Unix pipes for IPC. The lines are limited to a predefined max
+   size, say 100 bytes. The reader rejects (ignores) lines longer than
+   the max size. Implement all reading and writing using system calls
+   read() and write().
+
+   Hint: Make your program(s) modular, i.e, implement reader and doubler
+   as functions of their own such that you may reuse them in the later
+   tasks or with the task 2 of the exercise 1.
+
+
+6. Modify the reader and doubler programs by replacing the doubler with
+   a converter process that modifies each line by converting lower case
+   letters to upper case (no duplication of lines) and also make it
+   follow the client-server model, i.e., the converter does not print
+   out the lines that it converts, but instead, it sends the converted
+   lines back to the reader that prints them to standard output. This
+   also means that two pipes are needed, one per each direction. Employ
+   FIFOs (Unix named pipes) for IPC and implement the processes as
+   separate programs, i.e., no fork() in either of the programs.
+
+
+Comment clearly all your program code and test it!
+
+NOTE1: Programs that use fork() system call are prohibited to test on
+       the "main frame" Unix computers of the IT department as well as
+       on the "main frame" Unix computers of the CS department (i.e.,
+       melkki, melkinkari, melkinpaasi, as well as on the Unix nodes
+       of the IT Department (markka.helsinki.fi, pultti.helsinki.fi).
+
+       Preferably use your own a computer or a computer at the CS
+       department that you sitting at. In remote use, you may only use
+       the computer np1.cs.helsinki.fi that is allocated specifically
+       for use on this course.
+
+       For testing, also remember to add an appropriate sleep call
+       before each fork call in your program.
+
+
+NOTE2: Remember that in order to pass the course you need to complete
+       at least 1/4 of the exercise tasks. See the course web page
+       for further information.

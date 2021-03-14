@@ -1,0 +1,133 @@
+582303 Network Programming
+==========================
+
+Exercise 3  (Due on February 5, 2020)
+
+
+1. Modify the reader and doubler programs from previous exercise set
+   (Exercise 2/Task No: 5) further by adding a converter process in
+   between the reader and doubler. These tree processes build up a
+   pipeline where the reader reads lines, ignores long lines, and
+   forwards the accepted lines to the converter in the middle. The
+   converter modifies each line by converting lower case letters to
+   upper case and then sends the line to the doubler that duplicates
+   each line to the standard output.
+
+   A line means a character string ending with a newline character
+   ('\n').
+
+   Implement each process as a separate program (each program is started
+   from command line, i.e., NO fork() in any of the programs!) and
+   employ FIFOs (Unix named pipes) for IPC.
+
+   All reading and writing is implemented with system calls read() and
+   write(), except that error messages to stderr can be implemented with
+   stdio library functions.
+
+   Test your program such that it works also when input for stdin is
+   redirected from a file. 
+
+
+2. Modify the example program that uses shared memory and file locks for
+   locking the critical region (program files shm_incr2.c and
+   lock_fcntl.c) in the following way: the program code does not include
+   fork, that is, several independent processes, each started separately
+   to execute the same program code, are able to access the same shared
+   memory area. Make the required modifications both to the file lock
+   initialization as well as to the shared memory initialization (i.e.,
+   the processes need to use the same path name), so that the same
+   program can be run several times in parallel and the counter becomes
+   correctly incremented.
+
+    The example program files are available at:
+
+      http://www.cs.Helsinki.FI/group/unixtl/vst20/examples/shm_incr2.c
+      http://www.cs.Helsinki.FI/group/unixtl/vst20/examples/lock_fcntl.c
+
+
+3. Modify the program of the previous task (Task No: 2) further, so that
+   there is a shared character table (character buffer) adjacent to the
+   shared integer counter in the shared memory area. Each process writes
+   (stores) on each cycle of the program's for-loop a character of its
+   own (given as a command line argument, for example) into the shared
+   character table using the shared integer counter as the index to the
+   character table, i.e., the character is stored nloop times into the
+   table by each process, the table looking something like 
+
+   AABBBABBAABAB...
+
+   after running simultaneously two processes a and b that write
+   character A and B, respectively.
+
+   HINT: In order to ensure that the processes are run simultaneously,
+   use a short sleep using usleep(), for example, after each character
+   has been stored into the table.
+
+4. Modify or reimplement the reader and doubler programs (Task No:5 of
+   the Exercice 2) so that you employ TCP sockets for IPC. The doubler
+   acts as the server and the reader as the client that connects to the
+   server. Use system calls read() and write() also for reading from
+   stdin and writing to stdout. The server IP address is given as a
+   command line argument to the client. Implement the client and server
+   as separate programs and make a concurrent implementation of the
+   server by forking a new child process to serve each new client.
+   Select the port number for the server yourself in the range
+   50000-51999.
+
+
+5. Modify the TCP client and server of the previous task No:4, so that
+   the client does not read the data from the standard input, but it
+   generates itself the data it sends, and the server simply ignores the
+   data after receiving it instead of doubling the lines and writing
+   them to the standard output. The total amount of bytes to send is
+   given as a command line argument to the client. In addition, the
+   (max) amount of bytes to send with a single write() call is given as
+   another command line argument. When the client has sent all data, it
+   closes the TCP connection to inform the server about the end of the
+   transfer. The maximum number of bytes to read with a single read()
+   call (the read buffer size) is given as a command line argument to
+   the server.
+
+
+6. Add code for measuring the elapsed time of data transfer in both
+   client and server of the previous task (No:5). The client starts the
+   clock prior to the first call to write() and stops the clock when all
+   data has been written. The server starts the clock immediately after
+   the first read() returns and stops the clock when all data has been
+   received. Add also code in the client that measures the elapsed time
+   of establishing the TCP connection. Include appropriate output for
+   printing the measured elapsed times in the client and server. You may
+   also calculate and print measured throughput (bytes/s).
+
+   Run your client and server on different computers. Is the measured
+   elapsed time in the client different from that of the server when you
+   transfer a moderate amount of bytes ( > 100Kbytes but < 1 Mbytes)? If
+   so, explain why? When measuring the data transfer performance at the
+   application level in which end should that be done? Explain why?
+
+   How do the elapsed times differ when you write() and read() a small
+   number of bytes (e.g., 1 byte) at a time compared to the case when
+   you write() and read() a larger number of bytes ( >> 1 Kbytes, e.g.,
+   ~10Kbytes or more ) with each system call? Explain why? 
+
+Please comment clearly all your program code and test it!
+
+NOTE:  Programs that use fork() system call are prohibited to test on
+       the "main frame" Unix computers of the IT department (markka and
+       pultti) as well as on the "main frame" Unix computers of the CS
+       department (i.e., melkki, melkinkari, melkinpaasi). Preferably
+       use the computer at the CS department that you sitting at.
+
+       In remote use, you may use only the five department nodes that
+       are specifically reserved for this purpose:
+
+       np1.cs.helsinki.fi
+       ...
+       np5.cs.helsinki.fi
+
+       All programs that use fork() system call (e.g., TCP servers)
+       should be run only on these computers in remote use. np1 - np5
+       are not remotely accessible outside of the department network
+       (including eduroam). That is, you need to first take a remote
+       login (ssh) session to melkki (or melkinpaasi or melkinkari) and
+       continue from there with remote login to one of the np computers.

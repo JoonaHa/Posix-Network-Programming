@@ -1,0 +1,32 @@
+4. a) How do the variants of the exec call differ from each other?
+      (that is, execve() and its front ends: execl(), execlp(), 
+      execle(), etc.)
+
+   b) What information in process context is changed (or remains the
+      same) when a process calls exec() system call?
+
+
+a) Basicly other variants are wrappers for execve() system call.
+
+- execve (pathname, argv[],envp[])
+
+- execl (pathname, arg0, arg1,arg2...)
+- execle (pathname, arg0, arg1,arg2...,envp[])
+- execv (pathname, argv[])
+
+filename is searched from PATH enviroment variable if if doesn't contain slashes "/"
+- execlp (filename, arg0, arg1,arg2...)
+- execvpe(filename, argv[], envp[])
+- execvp (filename, argv[])
+
+
+b)
+- Ofcourse path, arguments and enviroment variables are changed.
+- Data an Stack are replaced
+- Most of other things are inthrited from calling process
+    - Singnals stay the same
+	- File locks stay
+	- File descriptors are kept open
+	- Process ID, Parent process ID, Process groUp id, Real group id, nice, current working directory etc..
+
+https://pubs.opengroup.org/onlinepubs/9699919799/functions/exec.html#tag_16_111_06_05

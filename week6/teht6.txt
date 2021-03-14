@@ -1,0 +1,15 @@
+Task 6
+
+a) 
+I think the hardest topics was multi-threading and concurrency, but this might be because it was introduced pretty late on the course and personally I didn't have much experience in C programming before the course.
+First few week dwelled too long on pipes and somewhat on fifos.
+
+b)
+During the course there where several mentions that a specific way of handling errors or signals isn't production quality but they were little to none examples that could be good enough "for production". 
+Their could be few examples on how to handle things in a way that is comprehensive enough for a production setting.
+Also they're could be more exercises on multi-threading as it's an important topic for concurrent servers an it could become right after the students are familiar with fork.
+The first we weeks could talks less about pipes and go faster to sockets. Yes, using pipes gives you a nice basic understanding of how sockets work, but when you have written few applications using them their usage has become pretty clear.
+
+c)
+Lecture notes could include less code examples and more summaries. The course book included nice written out explanations for many functions and how use them correctly. 
+These could be used more in the lecture notes and maybe link the code examples to material and only include the relevant parts on the notes.

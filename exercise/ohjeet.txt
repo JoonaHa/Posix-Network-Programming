@@ -1,0 +1,52 @@
+Service port: 61525
+HELLO this is UNIX_TL server
+HELLO
+Please, send your exact login name
+joonahal
+# 101 Hello Halonen Joona S at melkinpaasi.cs.helsinki.fi. Wait a moment.
+
+# 205 Make your own concurrent server (no hello greetings). You have 5 seconds time to create your service at port 22074
+# 106 Don't call us - we'll call you!
+# 310 Problems with the first connection to your server!
+# 209 Goodbye, UNIX_TL server closing connection.
+
+
+
+
+
+
+# This is a comment, ignore it.
+# Implement these commands:
+# first char  meaning...
+#  #  comment - ignore this line
+#  E  echo - send this line back in uppercase, including starting letter E
+#  C  code - send the pathname (filename) of your server program source code
+#            It should be a relative pathname to your home directory  /home/fs/joonahal/
+#  F  <file> <port>
+#     F command requests you to create a file transfer connection to the
+#     port <port> and to send the file named <file> over this connection.
+#     <file> is the absolute pathname of the file to be sent.
+#     Before creating the file transfer connection you should send the
+#     size of the requested file (in bytes) as a reply to the F command.
+#     Example:
+#     F /home/fs/kojo/.profile 12553
+#     Steps to be taken:
+#     1) Reply with the size of the file /home/fs/kojo/.profile: 1238
+#     2) Connect to the port 12553 and send the file via this new connection
+#     3) Close the file transfer connection
+#
+#
+#  A   accept - be happy don't worry
+#  Q   quit - this connection
+# I will send you command A when your program seems to work!
+E Echo This String in Uppercase, Please (Magical Word=rspvdcqbuvdptbehuhlobnaobghfcdktnbqqeisafnhaodakkdrdijjjprgrmqebsvsoveotrnlardcdglxouipmbwvn)
+# 312 Problems with your echo!
+# 301 UNIX_TL server timed out.
+# 209 Goodbye, UNIX_TL server closing connection.
+on PID:9593
+qlswbfctgfmmdllsscrvuobmdtmrspvdcqbuvdptbehuhlobnaobghfcdktnbq)
+# 312 Problems with your echo!
+# 301 UNIX_TL server timed out.
+# 209 Goodbye, UNIX_TL server closing connection.
+
+# 318 File transfer error.

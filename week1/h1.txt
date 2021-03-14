@@ -1,0 +1,100 @@
+TKT21026 Network Programming
+============================
+
+Exercise 1  (due January 22, 2020):
+
+1. Write a C program that
+
+   a) uses system calls to get the process ID (pid), parent pid (ppid), 
+      process group ID (pgid), and user ID (uid) of a running process
+      and then prints this information, and 
+
+   b) prints its environment variables.
+
+   c) write a piece of code that measures the elapsed time for executing
+      a piece of code (see man gettimeofday). Apply your code to measure
+      the elapsed time it takes to execute the system calls in task 1 a)
+      as well as for printing the environment variables in task 1 b). 
+      Is there any notable difference in the elapsed times between the
+      case 1 a) and 1 b)?
+      
+
+2. Write a C program "doubler" that reads text lines and writes each
+   line twice to standard output. Each duplicated line is written
+   immediately after the original line. The pathname of the file to be
+   read is given as a command line argument. If the pathname is not
+   given, the program reads from standard input. Write two versions of
+   the program:
+
+   a) a version that uses stdio library functions for reading and 
+      writing, and
+   b) a version that uses corresponding system calls.
+
+   You can make an assumption that the lines in the file are not
+   extremely long, but limited to some predefined size, i.e., the
+   program needs not to work perfectly with overlenght lines.
+
+   Test your programs such that they work properly also when reading
+   from a file.
+
+
+3. a)  Take a look at the stat() system call (as well as fstat() 
+       and lstat() ) and find out the operation of the calls as
+       well as the meaning of each entry of struct stat. 
+
+   b)  Write a C program (or a function) that retreives the type,
+       owner, and size of the "file" for a given file descriptor. 
+       Include code to print out the retreived file attributes.
+
+
+4. a) Write a C program, which copies the content of a file to standard
+      output, that is, it reads from a file (pathname is given as a
+      command line argument) and writes to a terminal (STDOUT_FILENO).
+      Use system calls (open, read, write, ...) for I/O. The program
+      should catch SIGINT signal (use signal() system call). When SIGINT
+      signal is caught, the program writes an appropriate message to
+      the terminal (STDERR_FILENO) informing about the arrival of the
+      signal, and exits.
+
+      Note: SIGINT signal is sent to the process when ctrl-C is pressed
+      on the keaboard. Test your program with large enough text file or,
+      if necessary, slow down the execution of the process when testing
+      it, so that it allows you enough time to press ctrl-C when the
+      program is still running. You use sleep() or usleep() for slowing
+      down the execution of the program (see man 3 sleep and man 3 
+      usleep).
+
+   b) Read the man page for the sigaction() call and find out the 
+      meaning of each argument of the call. Also modify the program of
+      the task 4 a) to use sigaction() instead of signal().
+
+
+5. On page 138 in the course book (Fig 5.11) is an improved version of
+   the signal handler for SIGCHLD signal (skeleton also available on
+   slide 39). This version solves the problem due to the lack of signal
+   queuing but is still not quite correct solution in a general case.
+   What is the problem involved with this signal handler. Can you
+   improve the solution to make it safe for the general use. If 
+   possible, give two alternative solutions.
+
+
+6. When testing programs that fork() new process, problems may occur if
+   there are bugs in the program that may lead in creating a huge number
+   of child processes, for example. Or sometimes processes tend to
+   remain running there mistakenly.
+
+   What Unix shell commands (or series of Unix commands) you need in
+   order to accomplish the following on a Unix system?
+
+   a) Find out all your processes that are currently running.
+
+   b) Get information on processes running a certain program.
+
+   c) Kill 1) a certain process, 2) kill all your processes running
+      a certain program, or 3) kill all your processes.
+
+Please comment your code and test it!
+
+Note: It is also very useful to make your code modular as it will
+allow you to reuse some pieces of your code in the upcoming
+exercises.

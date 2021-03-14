@@ -1,0 +1,122 @@
+582303 Network Programming
+==========================
+
+Exercise 5 (due on Feb 19, 2020):            
+
+
+1. Install the example programs of the UNIX Network Programming, Vol 1
+   by Stevens in a Linux system (into your home directory). Do this at
+   one of the computers at the department, e.g., on a node 
+   np[1-3].cs.helsinki.fi, to ensure the programs execute at department
+   Unix systems.
+
+   A gzip'ed tar archive is available at
+
+     http://www.cs.helsinki.fi/u/kojo/vst/unpv13e.tar.gz
+
+   The package includes installing instructions (README). Do not bother
+   installing libraries: 
+     libroute 
+     libxti 
+
+   Also compile "daytimetcpcli" program as instructed. What changes, if
+   any, are needed to compile the basic libraries or example program(s)?
+
+   Run and test the daytime client program ("daytimetcpcli"). Note that
+   when testing the daytime client program at the Department of Computer
+   Science in the University of Helsinki, use the daytime server running
+   on host "np1.cs.helsinki.fi" (IP-address 128.214.9.57). Hosts other
+   than np1 (or np2/np3) at the department do not run the daytime
+   server. When testing the client, run your program on one of the nodes
+   (np2 or np3) reserved for the course, or on melkki, melkinpaasi, or
+   melkinkari. Otherwise, you may not not able to connect to the daytime
+   server.
+
+
+2. a) Modify the example program by Stevens for the TCP daytime server
+      (intro/daytimetcpsrv1.c) to use a port of your choice in the range
+      49999-51000. Why is this modification needed to run your own
+      server? Modify the original TCP daytime client program
+      (intro/daytimetcpcli.c) accordingly. Test the client and server
+      operation.
+
+   b) Remove the listen call in the server and run the programs. What 
+      happens (in the client, in the server, at the TCP layer)? Why?
+
+   c) Restore the listen call in the server code but this time remove
+      the bind call. What happens now (in client/in server)? Why?
+
+   d) Modify TCP daytime client (intro/daytimetcpcli.c) to connect the
+      modified server (task 2 a) several times in a single run. Give the
+      number of connections as a command line argument and use the
+      programs to figure out how the Unix system seems to allocate port
+      numbers in the client. Try also running two (or more) client
+      programs simultaneously on the same computer.
+
+
+3. Write a simple TCP client and server where the client reads data from
+   standard input and sends the data to the server. The server writes
+   the data it receives to standard output. You may base the code on the
+   programs of task 4 of Exercise 3, for example, but the server can be
+   implemented as an iterative (serial) server, instead of a concurrent
+   server.
+
+
+   a) Test your programs and then modify the client to close
+      the read direction and the server to close the write direction
+      of the connection immediately after the connection has been
+      established (use shutdown() call). Does the program operation
+      change? Why/Why not? What happens at the TCP layer?
+
+   b) Next modify the server to close the read direction of the
+      connection (and to stop reading, of course) either immediately or
+      after receiving some data. Make sure that the client, however,
+      continues sending data. What happens now in the client / in the
+      server / at the TCP layer?
+
+   c) Modify the server to close both the read and write direction of
+      the connection either immediately or after receiving some data.
+      Again, make sure that the client, however, continues sending data.
+      What happens now in the client/ in the server / at the TCP layer?
+      How should this kind of situation be taken into account in the 
+      client code?
+
+
+4. Install the example programs of the UNIX Network Programming, 
+   Volume 2:Interprocess Communications" by Stevens in a Linux system
+   (into your home directory). A gzip'ed tar archive is available at
+
+     http://www.cs.helsinki.fi/u/kojo/vst/unpv22e.tar.gz
+
+   Compile the basic library (lib directory). What changes, if
+   any, are needed to compile the basic library of the example code?
+
+
+5&6. Write a brief description summarising principles in multicasting
+     and how applications can use multicasting (i.e., the major
+     programming steps needed to send/receive multicast messages). You
+     may describe the IPv4-related issues only (IPv6 not required, but
+     can be included).
+
+     A summary of roughly from one up to two pages is good enough.
+     Return your written summary to the instructor in advance by email
+     (firstname.lastname@cs.helsinki.fi). Deadline February 19, 2020 at
+     2 pm.
+
+
+NOTE:
+
+The Programming Exercise of the course will take place on the last week
+of the course: a period of roughly one week starting Feb 24, 2020.
+Completing the Programming Exercise is required to pass the course.
+
+Allocate enough time to complete the exercise during this period,
+prerably faster, and allocate your time more towards the beginning of
+the week!
+
+The workload of this exercise roughly matches the workload of
+two to three regular weekly exercises and course points are gained
+according to the completion date of the exercise (more points for faster
+completion). More details on the Programming Exercise will be available
+on the course Web page before the exercise starts and the exercise is
+briefly introduced during the lecture on Feb 19, 2020.

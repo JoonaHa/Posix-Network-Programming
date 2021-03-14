@@ -1,0 +1,94 @@
+582303 Network Programming
+==========================
+
+Exercise 6 (due on Feb 26, 2020):
+
+
+1. Look at the threads example program (mutex/prodcons6.c) discussed
+   in the lecture class. The code is available in Stevens book: 
+   Unix Network Programming, Volume 2: Interprocess
+   Communications; the example source code is available at
+   http://www.cs.helsinki.fi/u/kojo/vst/unpv22e.tar.gz
+
+   Modify the program so that there is more than one consumer (that is,
+   modify the consume() function). Test your modified program. Is there
+   a need for any other changes, for example, in the use of mutexes or
+   condition variables in producer/consumer? Why/Why not?
+
+
+2. a) Write the required code to experimentally find out the largest UDP
+      datagram you can send. What is the result? What happens at the
+      sending end, if the datagram is too big?
+
+   b) Try connecting a UDP socket using connect() call. What is the
+      effect of connect() on a UDP socket? What happens in the network
+      when connect() is called for a UDP socket?
+
+      Send datagrams with such a socket to a host that does not have the
+      corresponding peer (server) to receive the datagrams from the
+      given port. What happens in the network? Which error is generated? 
+      Hint: most hosts at the CS department, except
+
+        np[1-3].cs.helsinki.fi 
+
+      do not run echo server. And, like most hosts,
+      np[1-3].cs.helsinki.fi do not have a server running for the most
+      of the available port numbers in the port number range.
+
+      Is there any difference, if you send a datagram using a UDP socket
+      without calling first connect()? What is the difference?
+
+
+3. What is the thread-specific data needed for? Why are the facilities
+   described in the course book (Ch. 26.5) and lecture slides needed?
+
+   Would it be enough if the required memory allocation is done
+   separately and dynamically for each thread (using malloc)?
+
+
+4&5. Get yourself familiar with the Unix system logging: the syslogd
+     daemon and how programs may output messages to the system log
+     (syslog(), openlog(), closelog() ). Summarize briefly the
+     principles of syslogd usage.
+
+     Prepare a brief summary less than one page and return it to the
+     instructor in advance by email (firstname.lastname@cs.helsinki.fi).
+     Deadline Feb 26, 2020 at 2 pm. When sending your answers use
+     subject line: TKT21026 Network Programming Exercise 6
+
+
+6. Your opinions on this course. Send your opinions on a) - c) to the
+   instructor by email (firstname.lastname@cs.helsinki.fi). 
+   Deadline Feb 26, 2020 at 2 pm. When sending use subject line:
+   TKT21026 Network Programming Exercise 6
+
+   a) Which topics were, in your opinion, the most difficult and
+      easiest ones? Which topics were the most interesting and 
+      important ones? Which topics were dull or unnecessary?
+
+   b) How should the course be changed in the future? What should be
+      more and what less? What missing topics should be included, if 
+      any? Which topics deserve more attention in the lectures and 
+      exercise sessions. Which topics deserve less attention?
+
+   c) Any other comments you would like to make.
+
+   d) Fill in also the course feedback form in WebOodi soon after the
+      course has ended, at latest within 3 weeks.
+
+      Thank you in advance!
+
+
+Note1: The Programming Exercise starts on Mon Feb 24, 2020 at 11 am at
+       latest.
+
+       The task was briefly introduced on the lecture on Wed Feb 19
+       and detailed instructions will published on the course web page. Note
+       that the course points are gained according to the completion
+       date of the exercise. Remember to allocate enough time to complete
+       the exercise, preferably towards the beginning of the week!
+
+Note2: The course exam date is Tue March 3, 2020 at 16:00 - 18:30 o'clock,
+       Exactum, CK112.
+
+       Be active and prepare for success in the exam!

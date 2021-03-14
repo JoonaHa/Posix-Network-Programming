@@ -1,0 +1,12 @@
+How does TCP layer react at a server host when a TCP SYN segment arrives at the server but the backlog queue of the listen socket is
+full. How is this visible in the client application that is trying to connect the server?
+
+
+If the servers backlog queue of the LISTEN socket is full the server fill simply ignore the
+SYN package and does not send a RST segment.
+This has the effect that the client fill simply try to send it the SYN-segment
+again and only causes some delay while connecting.
+
+If the RST-segment was sent the client application needs to handle
+the RST-segment.
+Ignoring the SYN lets the TCP's retransmission protocol take over.

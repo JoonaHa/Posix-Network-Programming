@@ -1,0 +1,16 @@
+6. 
+a) Find out all your processes that are currently running.
+	ps -A or top/htop
+
+b) Get information on processes running a certain program.
+	Find out pid usig ps or top and use top -p <pid>/htop -p <pid> or pstree for child processes
+
+c) Kill 
+	1) a certain process, 
+	Find out pid usig ps or top and use kill <pid>
+	2) kill all your processes running a certain program, or 
+	killall <program name>
+	3) kill all your processes.
+	killall5 or per user killall -u <user name> or <uid>
+	kill -1 -1
+
