@@ -37,7 +37,7 @@ void reader(int maxBuffer, int *fd) {
 
         } else {
 
-            write(fd[1], buffer, maxBuffer);
+            write(fd[1], buffer, strlen(buffer));
             //write(STDOUT_FILENO, buffer, strlen(buffer));
             memset(buffer, 0, maxBuffer);
         }
@@ -59,11 +59,21 @@ void doubler(int maxBuffer, int *fd) {
     close(fd[1]);
     while (bufferLength = read(fd[0], buffer, maxBuffer) > 0) {
         int k = strlen(buffer);
+        if (k > maxBuffer) {
+
+            close(fd[0]);
+            exit(EXIT_FAILURE);
+        } else {
 
 
-        write(STDOUT_FILENO, buffer, k);
-        write(STDOUT_FILENO, buffer, k);
-        memset(buffer, 0, maxBuffer);
+            write(STDOUT_FILENO, buffer, k);
+            write(STDOUT_FILENO, buffer, k);
+            memset(buffer, 0, maxBuffer);
+        }
+
+
+
+
 
     }
 
